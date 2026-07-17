@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.vividmind.fourpicsclues" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>4 Pics Clues</name>
+    <!-- Add these two lines here -->
+    <preference name="android-minSdkVersion" value="22" />
+    <preference name="android-targetSdkVersion" value="33" />
+    
     <description>4 Pics Clues - Premium Puzzle Game</description>
     <author email="vividmindstudios@gmail.com">VividMind Studios</author>
     <content src="index.html" />
