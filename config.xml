@@ -31,7 +31,9 @@
 
     <!-- In-App Purchases -->
     <plugin name="cordova-plugin-purchase" spec="^13.0.0" />
-
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+        <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+    </config-file>
     <!-- Permissions -->
     <access origin="*" />
     <allow-navigation href="*" />
