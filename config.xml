@@ -15,17 +15,24 @@
 
     <content src="index.html" />
 
+    <!-- Android SDK versions -->
     <preference name="android-minSdkVersion" value="23" />
     <preference name="android-targetSdkVersion" value="33" />
 
+    <!-- App settings -->
     <preference name="AllowInlineMediaPlayback" value="true" />
     <preference name="MediaPlaybackRequiresUserAction" value="false" />
     <preference name="Orientation" value="portrait" />
     <preference name="Fullscreen" value="true" />
+    <preference name="HideTitleBar" value="true" />
+    <preference name="ShowTitle" value="false" />
     <preference name="BackgroundColor" value="#0b0f14" />
 
+    <!-- Google Play Billing -->
     <plugin name="cordova-plugin-purchase" spec="^13.0.0" />
 
+    <!-- Permissions -->
     <access origin="*" />
     <allow-navigation href="*" />
+
 </widget>
