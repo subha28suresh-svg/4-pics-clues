@@ -17,7 +17,8 @@
 
     <!-- Android SDK versions -->
     <preference name="android-minSdkVersion" value="23" />
-    <preference name="android-targetSdkVersion" value="33" />
+    <preference name="android-targetSdkVersion" value="35" />
+    <preference name="android-compileSdkVersion" value="35" />
 
     <!-- App settings -->
     <preference name="AllowInlineMediaPlayback" value="true" />
@@ -28,7 +29,7 @@
     <preference name="ShowTitle" value="false" />
     <preference name="BackgroundColor" value="#0b0f14" />
 
-    <!-- Google Play Billing -->
+    <!-- In-App Purchases -->
     <plugin name="cordova-plugin-purchase" spec="^13.0.0" />
 
     <!-- Permissions -->
