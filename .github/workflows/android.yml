@@ -1,20 +1,35 @@
 name: Build Android App
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          
       - name: Install Cordova
         run: npm install -g cordova
-      - name: Build App
+        
+      - name: Sign and Build
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEY_PASS: ${{ secrets.KEY_PASSWORD }}
+          ALIAS: ${{ secrets.KEY_ALIAS }}
         run: |
+          # Convert the Base64 secret back into a .jks file
+          echo "$KEYSTORE_BASE64" | base64 -d > upload-keystore.jks
+          
+          # Add the Android platform
           cordova platform add android
-          cordova build android --release -- --bundle
+          
+          # Build the release bundle (AAB) with signing
+          cordova build android --release -- --bundle --keystore=upload-keystore.jks --storePassword="$KEY_PASS" --password="$KEY_PASS" --alias="$ALIAS"
+          
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
