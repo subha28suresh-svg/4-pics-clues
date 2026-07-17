@@ -1,38 +1,45 @@
 name: Build Android App
-on: [push]
+
+on:
+  push:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          
+          node-version: 18
+
       - name: Install Cordova
         run: npm install -g cordova
-        
-      - name: Sign and Build
+
+      - name: Restore Keystore
         env:
           KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > upload-keystore.jks
+
+      - name: Build Android Bundle
+        env:
           KEY_PASS: ${{ secrets.KEY_PASSWORD }}
           ALIAS: ${{ secrets.KEY_ALIAS }}
         run: |
-          # Convert the Base64 secret back into a .jks file
-          echo "$KEYSTORE_BASE64" | base64 -d > upload-keystore.jks
-          
-          # Root Cause Fix: Cleanly add the platform to prevent stale XML conflicts
           cordova platform rm android || true
-          cordova platform add android
-          
-          # Build the release bundle (AAB) with signing
-          cordova build android --release -- --bundle --keystore=upload-keystore.jks --storePassword="$KEY_PASS" --password="$KEY_PASS" --alias="$ALIAS"
-          
+          cordova platform add android@13.0.0
+
+          cordova build android --release -- --bundle \
+            --keystore=upload-keystore.jks \
+            --storePassword="$KEY_PASS" \
+            --password="$KEY_PASS" \
+            --alias="$ALIAS"
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-bundle
-          path: platforms/android/app/build/outputs/bundle/release/
+          path: platforms/android/app/build/outputs/bundle/release/*.aab
