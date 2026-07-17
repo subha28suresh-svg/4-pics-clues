@@ -24,7 +24,8 @@ jobs:
           # Convert the Base64 secret back into a .jks file
           echo "$KEYSTORE_BASE64" | base64 -d > upload-keystore.jks
           
-          # Add the Android platform
+          # Root Cause Fix: Cleanly add the platform to prevent stale XML conflicts
+          cordova platform rm android || true
           cordova platform add android
           
           # Build the release bundle (AAB) with signing
