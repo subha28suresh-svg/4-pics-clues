@@ -31,13 +31,13 @@ const db = initializeFirestore(app, {
 // ==========================================
 // AUDIO SUBSYSTEM WITH FALLBACKS
 // ==========================================
-const bgMusic = new Audio("https://ik.imagekit.io/AngLak/bg-music.mp3");
+const bgMusic = new Audio("assets/bg-music.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.4; 
 
-const sndBuzzer = new Audio("https://ik.imagekit.io/AngLak/buzzer.mp3");
-const sndCheer = new Audio("https://ik.imagekit.io/AngLak/cheer.mp3");
-const sndClick = new Audio("https://ik.imagekit.io/AngLak/click.mp3");
+const sndBuzzer = new Audio("assets/buzzer.mp3");
+const sndCheer = new Audio("assets/cheer.mp3");
+const sndClick = new Audio("assets/click.mp3");
 
 sndBuzzer.preload = "auto";
 sndCheer.preload = "auto";
