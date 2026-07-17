@@ -22,7 +22,7 @@
     <!-- Cordova Purchase Plugin & Android Billing Permission -->
     <plugin name="cordova-plugin-purchase" spec="^13.0.0" />
     <config-file target="AndroidManifest.xml" parent="/*">
-        <uses-permission name="com.android.vending.BILLING" />
+        <uses-permission android name="com.android.vending.BILLING" />
     </config-file>
 
     <access origin="*" />
