@@ -8,6 +8,18 @@ import {
     getDocs 
 } from "firebase/firestore";
 
+function verifyInternet() {
+    if (!navigator.onLine) {
+        document.getElementById('connectionAlert').style.display = 'block';
+        return false;
+    }
+    return true;
+}
+
+function hideContact() {
+    document.getElementById('contactInfo').style.display = 'none';
+}
+
 // ==========================================
 // 1. FIREBASE CONFIGURATION
 // ==========================================
