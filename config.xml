@@ -1,16 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.vividmind.fourpicsclues" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
-    xmlns="http://www.w3.org/ns/widgets" 
-    xmlns:android="http://schemas.android.com/apk/res/android">    
+<widget
+    id="com.vividmind.fourpicsclues"
+    version="1.0.0"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <name>4 Pics Clues</name>
-    <!-- Add these two lines here -->
+
+    <description>4 Pics Clues - Premium Puzzle Game</description>
+
+    <author email="vividmindstudios@gmail.com">
+        VividMind Studios
+    </author>
+
+    <content src="index.html" />
+
+    <!-- Android SDK Versions -->
     <preference name="android-minSdkVersion" value="22" />
     <preference name="android-targetSdkVersion" value="33" />
-    
-    <description>4 Pics Clues - Premium Puzzle Game</description>
-    <author email="vividmindstudios@gmail.com">VividMind Studios</author>
-    <content src="index.html" />
-    
+
+    <!-- App Preferences -->
     <preference name="AllowInlineMediaPlayback" value="true" />
     <preference name="MediaPlaybackRequiresUserAction" value="false" />
     <preference name="Orientation" value="portrait" />
@@ -20,17 +29,18 @@
     <preference name="TitleBar" value="false" />
     <preference name="ActionBar" value="false" />
     <preference name="BackgroundColor" value="#0b0f14" />
-    
-    <!-- Cordova Purchase Plugin & Android Billing Permission -->
-    <!-- Cordova Purchase Plugin -->
-    <plugin name="cordova-plugin-purchase" spec="^13.0.0" />
-    
-    <platform name="android">
-        <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="com.android.vending.BILLING" />
-        </config-file>
-    </platform>
 
+    <!-- Purchase Plugin -->
+    <plugin name="cordova-plugin-purchase" spec="^13.0.0" />
+
+    <!-- Allow network access -->
     <access origin="*" />
     <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+
 </widget>
