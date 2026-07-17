@@ -237,10 +237,6 @@ function transitionToWelcomePage() {
     document.getElementById('introLoadingView').style.display = 'none';
     document.getElementById('splashView').style.display = 'flex';
     
-    if (!isMuted) {
-        bgMusic.play().catch(err => console.log("Music waiting for interaction:", err));
-    }
-
     const welcomeVid = document.getElementById('welcomeGrandpaVideo');
     if (welcomeVid) {
         welcomeVid.play().catch(e => console.log("Video interaction pending focus:", e));
@@ -297,6 +293,10 @@ function updateCoinUI() {
 function dismissSplashScreen() {
     playSound(sndClick);
     
+    if (!isMuted) {
+        bgMusic.play().catch(err => console.log("Music play blocked:", err));
+    }
+
     const docElem = document.documentElement;
     if (docElem.requestFullscreen) {
         docElem.requestFullscreen().catch(e => console.log("Fullscreen defer:", e));
