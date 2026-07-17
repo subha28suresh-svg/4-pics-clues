@@ -20,10 +20,14 @@
     <preference name="BackgroundColor" value="#0b0f14" />
     
     <!-- Cordova Purchase Plugin & Android Billing Permission -->
+    <!-- Cordova Purchase Plugin -->
     <plugin name="cordova-plugin-purchase" spec="^13.0.0" />
-    <config-file target="AndroidManifest.xml" parent="/*">
-        <uses-permission android name="com.android.vending.BILLING" />
-    </config-file>
+    
+    <platform name="android">
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="com.android.vending.BILLING" />
+        </config-file>
+    </platform>
 
     <access origin="*" />
     <allow-navigation href="*" />
