@@ -39,4 +39,8 @@
     <access origin="*" />
     <allow-navigation href="*" />
 
+    <platform name="android">
+        <icon src="www/assets/4PicsClues_logo.png" />
+    </platform>
+
 </widget>
