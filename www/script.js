@@ -291,6 +291,7 @@ function updateCoinUI() {
 // 7. NAVIGATION VIEW CONTROLLERS
 // ==========================================
 function dismissSplashScreen() {
+    verifyInternet();
     playSound(sndClick);
     
     if (!isMuted) {
@@ -378,6 +379,7 @@ function showMenu() {
 // 8. CORE GAMEPLAY INTERACTIVE MECHANICS
 // ==========================================
 function startPuzzle(index) {
+    verifyInternet();
     currentPuzzleIndex = index;
     consecutiveWrongCount = 0; 
     hasClaimedDoubleCoins = false; 
