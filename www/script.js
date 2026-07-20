@@ -101,6 +101,7 @@ let levelProgress = JSON.parse(localStorage.getItem('gameProgress')) || {};
 let consecutiveWrongCount = 0;
 let hasClaimedDoubleCoins = false; 
 let levelsCompletedCounter = 0;
+let loadingTimer = null;
 
 ['easy_0', 'medium_0', 'hard_0'].forEach(id => {
     if (!levelProgress[id]) levelProgress[id] = 'unlocked';
@@ -210,7 +211,11 @@ function startIntroProgressBar() {
 
     loadPuzzlesFromFirestore();
 
-    let loadingTimer = setInterval(() => {
+    if (loadingTimer) {
+    clearInterval(loadingTimer);
+    }
+
+    loadingTimer = setInterval(() => {
         currentStep++;
         let percentage = (currentStep / totalSteps) * 100;
         
@@ -227,8 +232,9 @@ function startIntroProgressBar() {
         }
 
         if (currentStep >= totalSteps) {
-            clearInterval(loadingTimer);
-            transitionToWelcomePage();
+        clearInterval(loadingTimer);
+        loadingTimer = null;
+        transitionToWelcomePage();
         }
     }, intervalTime);
 }
