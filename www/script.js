@@ -102,6 +102,8 @@ let consecutiveWrongCount = 0;
 let hasClaimedDoubleCoins = false; 
 let levelsCompletedCounter = 0;
 let loadingTimer = null;
+let firestoreLoaded = false;
+let firestoreTimeout = null;
 
 ['easy_0', 'medium_0', 'hard_0'].forEach(id => {
     if (!levelProgress[id]) levelProgress[id] = 'unlocked';
@@ -208,7 +210,7 @@ function startIntroProgressBar() {
     let intervalTime = 50; 
     let currentStep = 0;
     let totalSteps = duration / intervalTime;
-
+    firestoreLoaded = false;
     loadPuzzlesFromFirestore();
 
     if (loadingTimer) {
@@ -229,6 +231,11 @@ function startIntroProgressBar() {
             statusText.innerText = "Syncing local progress settings...";
         } else if (percentage >= 90) {
             statusText.innerText = "Ready to play!";
+        }
+
+        if (percentage >= 90 && !firestoreLoaded) {
+        currentStep--;
+        return;
         }
 
         if (currentStep >= totalSteps) {
@@ -256,6 +263,20 @@ startIntroProgressBar();
 // 6. FIRESTORE CORES
 // ==========================================
 async function loadPuzzlesFromFirestore() {
+    firestoreTimeout = setTimeout(() => {
+
+        if (!firestoreLoaded) {
+
+            if (loadingTimer) {
+                clearInterval(loadingTimer);
+                loadingTimer = null;
+            }
+
+            document.getElementById('connectionAlert').style.display = 'flex';
+        }
+
+    }, 20000);    
+
     try {
         puzzleDatabase.easy = [];
         puzzleDatabase.medium = [];
@@ -283,8 +304,21 @@ async function loadPuzzlesFromFirestore() {
             }
         });
 
+            firestoreLoaded = true;
+        clearTimeout(firestoreTimeout);
+
     } catch (error) {
-        console.error("Database connection restricted: ", error.message);
+
+        clearTimeout(firestoreTimeout);
+
+        console.error("Database connection restricted:", error.message);
+
+        if (loadingTimer) {
+            clearInterval(loadingTimer);
+            loadingTimer = null;
+        }
+
+        document.getElementById('connectionAlert').style.display = 'flex';
     }
 }
 
