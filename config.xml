@@ -2,7 +2,7 @@
 <widget
     id="com.vividmindstudios.fourpicsclues"
     version="1.0.0"
-    android-versionCode="10001"
+    android-versionCode="10002"
     xmlns="http://www.w3.org/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
