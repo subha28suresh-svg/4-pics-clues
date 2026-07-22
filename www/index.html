@@ -225,14 +225,10 @@
         cursor: pointer;
       }
 
-      .logo {
-        font-size: 34px;
-        margin-top: 5px;
-        line-height: 1.05;
-        color: #ffffff;
-        letter-spacing: 3px;
-        font-weight: 900;
-        text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      .logo{
+        font-size:30px;
+        margin-top:0;
+        margin-bottom:4px;
       }
       .highlight {
         color: #00ff87;
@@ -261,17 +257,11 @@
         flex: 1;
         box-sizing: border-box;
       }
-      .speech-bubble {
-        background: linear-gradient(135deg, #ffd32c 0%, #ffb300 100%);
-        color: #090d12;
-        font-size: 14px;
-        font-weight: 800;
-        padding: 10px 16px;
-        border-radius: 18px;
-        position: relative;
-        max-width: 85%;
-        line-height: 1.4;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      .speech-bubble{
+        font-size:13px;
+        padding:8px 14px;
+        margin-bottom:6px;
+        max-width:88%;
       }
       .speech-bubble::after {
         content: '';
@@ -284,17 +274,13 @@
         border-color: #ffb300 transparent;
       }
 
-      .grandpa-avatar-container {
-        width: 80vw;
-        height: 80vw;
-        max-width: 320px;
-        max-height: 320px;
-        border: 3px solid #ffd32c;
-        border-radius: 24px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-        overflow: hidden;
-        background-color: #11161d;
-        margin: 0 auto;
+      .grandpa-avatar-container{
+        width:58vw;
+        height:58vw;
+        max-width:230px;
+        max-height:230px;
+        border-radius:20px;
+        margin:0 auto;
       }
       .grandpa-avatar {
         width: 100%;
@@ -322,16 +308,9 @@
         box-sizing: border-box;
         border: 1px solid rgba(255, 255, 255, 0.05);
       }
-      .tab-btn {
-        flex: 1;
-        background: none;
-        border: none;
-        color: #a4b0be;
-        padding: 12px 0;
-        font-size: 14px;
-        font-weight: bold;
-        border-radius: 25px;
-        cursor: pointer;
+      .tab-btn{
+        padding:10px 0;
+        font-size:13px;
       }
       .tab-btn.active {
         background: #00ff87;
@@ -340,44 +319,40 @@
         box-shadow: 0 4px 15px rgba(0, 255, 135, 0.3);
       }
 
-      #menuView {
-        background: rgba(30, 37, 47, 0.4);
-        border: 2px solid rgba(0, 255, 135, 0.25);
-        border-radius: 24px;
-        padding: 16px 16px;
-        margin: 6px 0;
-        box-sizing: border-box;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(8px);
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
+      #menuView{
+        background:rgba(30,37,47,.4);
+        border:2px solid rgba(0,255,135,.25);
+        border-radius:22px;
+        padding:12px;
+        margin:4px 0;
+        flex:1;
+        display:flex;
+        flex-direction:column;
+        overflow:hidden;
       }
 
-      .level-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 8px;
-        margin-top: 10px;
-        flex: 1;
-        overflow-y: auto;
-        padding: 4px;
-        width: 100%;
-        box-sizing: border-box;
+      .level-grid{
+        display:grid;
+        grid-template-columns:repeat(5,minmax(0,1fr));
+        gap:8px;
+        width:100%;
+        flex:1;
+        overflow-y:auto;
+        padding:4px;
+        box-sizing:border-box;
+        align-content:start;
       }
-      .level-card {
-        aspect-ratio: 1;
-        background-color: #1e252f;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: 800;
-        font-size: 17px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      .level-card{
+        aspect-ratio:1;
+        border-radius:12px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:15px;
+        font-weight:800;
+        cursor:pointer;
+        transition:.15s;
+        min-height:52px;
       }
       .level-card.unlocked { background-color: #ffd32c !important; color: #090d12 !important; border: none; box-shadow: 0 4px 12px rgba(255, 211, 44, 0.25); }
       .level-card.completed { background-color: #0fbcf9 !important; color: white !important; border: none; box-shadow: 0 4px 12px rgba(15, 188, 249, 0.25); }
@@ -705,6 +680,39 @@
       .flower-particle:nth-child(13) { left: 50%; animation-duration: 2.2s; animation-delay: 0.9s; font-size: 20px; }
       .flower-particle:nth-child(14) { left: 70%; animation-duration: 2.4s; animation-delay: 1.3s; font-size: 15px; }
       .flower-particle:nth-child(15) { left: 90%; animation-duration: 1.9s; animation-delay: 0.7s; font-size: 18px; }
+
+      @media (max-height:700px){
+
+        .grandpa-avatar-container{
+            width:48vw;
+            height:48vw;
+            max-width:180px;
+            max-height:180px;
+          }
+
+        .speech-bubble{
+            font-size:12px;
+            padding:6px 12px;
+          }
+
+        .logo{
+            font-size:26px;
+        }
+
+        .level-grid{
+            grid-template-columns:repeat(5,1fr);
+            gap:6px;
+        }
+
+        .level-card{
+            min-height:46px;
+            font-size:14px;
+        }
+
+        .tab-btn{
+            padding:8px 0;
+        }
+      }
 
       .shop-overlay {
         position: absolute;
