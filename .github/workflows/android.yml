@@ -31,7 +31,7 @@ jobs:
           ALIAS: ${{ secrets.KEY_ALIAS }}
         run: |
           cordova platform rm android || true
-          cordova platform add android@14.0.1
+          cordova platform add android@15.0.0
 
           cordova build android --release -- --bundle \
             --keystore=upload-keystore.jks \

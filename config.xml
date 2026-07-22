@@ -2,7 +2,7 @@
 <widget
     id="com.vividmindstudios.fourpicsclues"
     version="1.0.0"
-    android-versionCode="10002"
+    android-versionCode="10003"
     xmlns="http://www.w3.org/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -18,8 +18,8 @@
 
     <!-- Android SDK versions -->
     <preference name="android-minSdkVersion" value="23" />
-    <preference name="android-targetSdkVersion" value="35" />
-    <preference name="android-compileSdkVersion" value="35" />
+    <preference name="android-targetSdkVersion" value="36" />
+    <preference name="android-compileSdkVersion" value="36" />
 
     <!-- App settings -->
     <preference name="AllowInlineMediaPlayback" value="true" />
