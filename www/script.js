@@ -138,7 +138,7 @@ function openRatingModal() {
     const hasRated = localStorage.getItem('hasRatedGame') === 'true';
     if (hasRated) return;
 
-    const storeUrl = "https://play.google.com/store/apps/details?id=com.vividmind.fourpicsclues";
+    const storeUrl = "https://play.google.com/store/apps/details?id=com.vividmindstudios.fourpicsclues";
     window.open(storeUrl, "_system");
 
     coins += 100;
